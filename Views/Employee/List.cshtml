@@ -1,0 +1,99 @@
+﻿@model EmployeeListViewModel
+@{
+    ViewBag.Title = "Employee Manager";
+}
+<body id="employeeBackground">
+    <script>
+          function sortTable(n) {
+          var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+          table = document.getElementById("customTable");
+          switching = true;
+          // Set the sorting direction to ascending:
+          dir = "asc";
+          /* Make a loop that will continue until
+          no switching has been done: */
+          while (switching) {
+                // Start by saying: no switching is done:
+                switching = false;
+            rows = table.rows;
+            /* Loop through all table rows (except the
+            first, which contains table headers): */
+            for (i = 1; i < ({
+                // Start by saying there should be no switching:
+                shouldSwitch = false;
+              /* Get the two elements you want to compare,
+              one from current row and one from the next: */
+              x = rows[i].getElementsByTagName("td")[n];
+              y = rows[i + 1].getElementsByTagName("td")[n];
+              /* Check if the two rows should switch place,
+              based on the direction, asc or desc: */
+              if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                // If so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                  break;
+                }
+              } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase({
+                // If so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                  break;
+                }
+              }
+            }
+            if (shouldSwitch) {
+                /* If a switch has been marked, make the switch
+                and mark that a switch has been done: */
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+              switching = true;
+              // Each time a switch is done, increase this count by 1:
+              switchcount ++;
+            } else {
+              /* If no switching has been done AND the direction is "asc",
+              set the direction to "desc" and run the while loop again. */
+              if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+              }
+            }
+          }
+}
+    </script>
+    <h1 id="contactHeader">Employee Manager</h1>
+    <table class="customTable" id="customTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Name</th>
+                <th onclick="sortTable(1)">Job Title</th>
+                <th onclick="sortTable(2)">Hourly Rate</th>
+                <th onclick="sortTable(3)">Hire Date</th>
+                <th onclick="sortTable(4)">SSN</th>
+                <th>Modify</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Employee employee in Model.Employees)
+            {
+                <tr>
+                    <td>@employee.EmployeeFullName</td>
+                    <td>@employee.JobTitle</td>
+                    <td>@employee.HourlyRate.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
+                    <td>@employee.HireDate.ToShortDateString()</td>
+                    <td>*****@employee.SSN.Substring(5)</td>
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@employee.EmployeeID"
+                           class="btn btn-info">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete"
+                           asp-route-id="@employee.EmployeeID"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" class="btn btn-success" style="box-shadow: 0px 0px 3px 0px black">Add New Employee</a>
+</body>

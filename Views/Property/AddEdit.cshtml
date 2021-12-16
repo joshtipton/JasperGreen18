@@ -1,0 +1,72 @@
+﻿@model PropertyViewModel
+@{ string title = Model.Action + " Property";
+    ViewBag.Title = title; }
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<h1 id="contactHeader">@ViewBag.Title</h1>
+<form asp-action="Save" method="post" class="container">
+    <div class="row form-group">
+        <label asp-for="CurrentProperty.CustomerID">Property Owner</label>
+        <select id="selectList" asp-for="CurrentProperty.CustomerID"
+                asp-items="@(new SelectList(Model.GetCustomers,
+                                "CustomerID", "CustomerFullName", Model.GetCustomers.ToList()))"
+                class="form-control">
+            <option value="">Select a Customer</option>
+        </select>
+        <div class="col">
+            <span asp-validation-for="CurrentProperty.CustomerID" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentProperty.PropertyAddress"> Property Address </label>
+        <div>
+            <input asp-for="CurrentProperty.PropertyAddress" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentProperty.PropertyAddress" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentProperty.PropertyCity"> Property City </label>
+        <div>
+            <input asp-for="CurrentProperty.PropertyCity" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentProperty.PropertyCity" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentProperty.PropertyState"> Property State </label>
+        <div>
+            <input asp-for="CurrentProperty.PropertyState" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentProperty.PropertyState" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentProperty.PropertyZip"> Property Zip </label>
+        <div>
+            <input asp-for="CurrentProperty.PropertyZip" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentProperty.PropertyZip" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentProperty.ServiceFee"> Service Fee </label>
+        <div>
+            <input asp-for="CurrentProperty.ServiceFee" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentProperty.ServiceFee" id="aboutStyle"></span>
+        </div>
+    </div>
+    <input type="hidden" asp-for="CurrentProperty.PropertyID" />
+    <input type="hidden" asp-for="CurrentProperty.CustomerID" />
+    <button type="submit" class="btn btn-primary" id="AEButton">Save</button>
+    <a asp-action="List" class="btn btn-danger" id="AEButton">Cancel</a>
+</form>

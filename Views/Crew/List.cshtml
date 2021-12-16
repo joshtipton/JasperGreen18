@@ -1,0 +1,38 @@
+﻿@model CrewListViewModel
+@{ ViewData["Title"] = "Crew Manager"; }
+
+<body id="employeeBackground">
+    <h1 id="contactHeader">Crew Manager</h1>
+    <table class="customTable">
+        <thead>
+            <tr>
+                <th>Foreman</th>
+                <th>Worker 1</th>
+                <th>Worker 2</th>
+                <th>Modify</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Crew crew in Model.Crews)
+            {
+            <tr>
+                <td>@crew.CrewForeman.EmployeeFullName</td>
+                <td>@crew.CrewMember1.EmployeeFullName</td>
+                <td>@crew.CrewMember2.EmployeeFullName</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@crew.CrewID"
+                       class="btn btn-info">Edit</a>
+                </td>
+                <td style="text-align:center">
+                    <a asp-action="Delete"
+                       asp-route-id="@crew.CrewID"
+                       class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" class="btn btn-success" style="box-shadow: 0px 0px 3px 0px black">Add New Crew</a>
+</body>

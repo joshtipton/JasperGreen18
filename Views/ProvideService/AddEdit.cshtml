@@ -1,0 +1,70 @@
+﻿@model ServiceViewModel
+@{ string title = Model.Action + " Service";
+    ViewBag.Title = title; }
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<h1 id="contactHeader">@ViewBag.Title</h1>
+<form asp-action="Save" method="post" class="container">
+    <div class="row form-group">
+        <div class="row form-group">
+            <label asp-for="CurrentService.CrewID">Crew</label>
+            <select id="selectList" asp-for="CurrentService.CrewID"
+                    asp-items="@(new SelectList(Model.Crews,
+                                "CrewID", "CrewID", Model.Crews.ToList()))"
+                    class="form-control">
+                <option value="">Select a Crew</option>
+            </select>
+            <div class="col">
+                <span asp-validation-for="CurrentService.CrewID" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentService.CustomerID">Customer</label>
+            <select id="selectList" asp-for="CurrentService.CustomerID"
+                    asp-items="@(new SelectList(Model.Customers,
+                                "CustomerID", "CustomerFullName", Model.Customers.ToList()))"
+                    class="form-control">
+                <option value="">Select a Customer</option>
+            </select>
+            <div class="col">
+                <span asp-validation-for="CurrentService.CustomerID" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentService.PropertyID">Property</label>
+            <select id="selectList" asp-for="CurrentService.PropertyID"
+                    asp-items="@(new SelectList(Model.Properties,
+                                "PropertyID", "PropertyAddress", Model.Properties.ToList()))"
+                    class="form-control">
+                <option value="">Select a Property</option>
+            </select>
+            <div class="col">
+                <span asp-validation-for="CurrentService.PropertyID" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentService.ServiceDate">Service Date</label>
+            <div>
+                <input asp-for="CurrentService.ServiceDate" class="form-control">
+            </div>
+            <div class="col">
+                <span asp-validation-for="CurrentService.ServiceDate" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentService.ServiceFee"> Service Fee </label>
+            <div>
+                <input asp-for="CurrentService.ServiceFee" class="form-control">
+            </div>
+            <div class="col">
+                <span asp-validation-for="ServiceFee" id="aboutStyle" style="color: red"></span>
+            </div>
+        </div>
+        <input type="hidden" asp-for="CurrentService.ServiceID" />
+        <input type="hidden" asp-for="CurrentService.PaymentID" />
+        <button type="submit" class="btn btn-primary" id="AEButton">Save</button>
+        <a asp-action="List" class="btn btn-danger" id="AEButton">Cancel</a>
+</form>

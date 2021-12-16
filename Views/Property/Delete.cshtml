@@ -1,0 +1,15 @@
+﻿@model PropertyViewModel
+@{
+    ViewBag.Title = "Delete Property";
+}
+
+<div id="deleteBanner">
+    <h1 id="contactHeader">Confirm Deletion</h1>
+    <p id="aboutStyle">Are you sure you want to delete @Model.CurrentProperty.PropertyOwner.CustomerFullName's property
+    located at @Model.CurrentProperty.PropertyAddress? This action cannot be undone.</p>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="CurrentProperty.PropertyID" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="List" class="btn btn-warning">Cancel</a>
+    </form>
+</div>

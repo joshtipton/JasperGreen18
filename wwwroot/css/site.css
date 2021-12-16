@@ -1,0 +1,329 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    color: white;
+    background-color: #343434;
+    text-align: center;
+}
+
+body {
+    background: rgb(2,101,19);
+    background: linear-gradient(180deg, #17234e 0%, navy 100%);
+    font-family: 'Lexend Exa', sans-serif;
+    margin-bottom: 50px;
+}
+
+img {
+    -webkit-transform: translate(0px, -50px);
+    position: absolute;
+}
+
+.list-group-item {
+    border: 2px solid white;
+    width: 33%;
+    margin: 0px 0px 10px;
+    overflow: hidden;
+    background-color: #17234e;
+    color: white;
+    font-family: sans-serif;
+    text-align: left;
+    box-shadow: 0px 0px 3px 0px white;
+    -webkit-transform: translate(0px, -1px);
+    -webkit-transition: 0.5s all ease-in;
+}
+
+.list-group-item:hover {
+    border: 2px solid white;
+    background-color: white;
+    color: #343434;
+    text-align: left;
+    -webkit-transform: translate(0px, 1px);
+    -webkit-transition: 0.5s all ease-out;
+}
+
+/* Styles for Nav Bar */
+nav {
+    height: 10%;
+    background-color: transparent;
+}
+
+#navBorder {
+    padding-top: 20px;
+    border-bottom: 2px solid white;
+    line-height: 20px;
+    border: 1px white;
+}
+
+#navStyle {
+    text-align: center;
+    font-weight: 400;
+    font-family: Raleway, sans-serif;
+    font-size: 24px;
+}
+
+/* Styles for About Page */
+#aboutHeader {
+    color: #ffffff;
+    font-family: 'Raleway',sans-serif;
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 72px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#aboutStyle {
+    color: #f8f8f8;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#aboutBackground {
+    background: rgb(96,96,96);
+    background: linear-gradient(180deg, rgba(96,96,96,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+#contactHeader {
+    color: #ffffff;
+    font-family: 'Raleway',sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 62px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+#indexHeader {
+    color: white;
+    font-family: 'Raleway',sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 62px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+.nav-item:hover {
+    -webkit-transform: translate(0px, 2px);
+    -webkit-transition: 0.1s all ease-out;
+}
+
+.nav-item {
+    border: 1px white;
+    -webkit-transform: translate(0px, -2px);
+    -webkit-transition: 0.2s all ease-in;
+}
+
+#pillStyle {
+    background-color: transparent;
+    text-shadow: 0.5px 0.5px 1px #000000;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    max-height: 45px;
+    margin-bottom: 60px;
+}
+
+/* Table styles used in all cases */
+.customTable {
+    font-size: 16px;
+    font-weight: 100;
+    min-width: 400px;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    table-layout: auto;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    border: 1px solid white;
+    box-shadow: 0.5px 1px white;
+}
+
+    .customTable thead tr {
+        background-color: #4b5996;
+        color: #ffffff;
+        text-align: center;
+        text-shadow: 0.5px 0.5px 1px #000000;
+        overflow: hidden;
+    }
+
+    .customTable tr:hover {
+        font-weight: lighter;
+        border: 1px solid white;
+        -webkit-transform: translate(0px, 1px);
+        -webkit-transition: 0.2s all ease-in;
+    }
+
+    .customTable th:last-child {
+        background-color: #970808;
+        width: 12%;
+    }
+
+    .customTable th:nth-last-child(2) {
+        background-color: #2491A4;
+        width: 12%;
+    }
+
+    .customTable th:nth-last-child(3) {
+        width: 175px;
+    }
+
+    .customTable th, td {
+        padding: 15px 15px;
+        text-align: center;
+        box-shadow: 0px 0.5px 0px 0px white;
+        border: 1px solid white;
+        background-color: #17234e;
+        color: white;
+    }
+
+    .customTable tr:hover {
+        text-align: center;
+        box-shadow: 0px 0.5px 0px 0px white;
+        border: 1px solid white;
+        -webkit-transform: translate(0px, 1px);
+        border-radius: 15px;
+        -webkit-transition: 0.2s all ease-in-out;
+    }
+
+    .customTable tbody tr:nth-of-type(odd) {
+        background-color: white;
+        text-align: center;
+    }
+
+
+    .customTable tbody tr:nth-of-type(even) {
+        background-color: white;
+        text-align: center;
+    }
+
+.btn {
+    box-shadow: 0px 0px 3px 0px white;
+    text-transform: uppercase;
+    font-weight: 900;
+    border-radius: 30px;
+    text-shadow: 0.25px 0.25px 0.5px #000000;
+    margin-bottom: 5px;
+    width: 100px;
+}
+
+#AEButton {
+    -webkit-transform: translate(185px, 0px);
+    margin-right: 100%;
+    width: 500px;
+}
+
+    #AEButton:hover {
+        -webkit-transform: translate(185px, 1px);
+    }
+
+.btn-success {
+    width: 1110px;
+}
+
+.btn-warning {
+    color: white;
+    border: none;
+}
+
+    .btn-warning:hover {
+        color: white;
+        border: none;
+    }
+
+.btn:hover {
+    -webkit-transform: translate(0px, 1px);
+}
+
+label {
+    color: white;
+    font-family: 'Raleway',sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    text-shadow: 0.25px 0.25px 0.5px #000000;
+    width: 200px;
+}
+
+input.input-validation-error, select.form-control.input-validation-error {
+    border: 2px solid #dc3545;
+    background-color: #faebd7;
+}
+
+#selectList {
+    width: 500px;
+}
+
+#customerList {
+    width: 250px;
+}
+
+.form-control {
+    width: 500px;
+}
+
+span {
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#deleteBanner {
+    background-color: #4A2323;
+    box-shadow: 0px 0px 3px 0px white;
+    margin-top: 50px;
+    padding-left: 8px;
+    padding-bottom: 10px;
+    border: 5px solid white;
+}
+
+#successBanner {
+    background-color: #5cb85c;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 400;
+    text-shadow: 0.5px 0.5px 1px #000000;
+    overflow: hidden;
+    border: 1px solid white;
+    box-shadow: 0px 0px 3px 0px white;
+}
+
+#infoBanner {
+    background-color: #5bc0de;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 400;
+    text-shadow: 0.5px 0.5px 1px #000000;
+    overflow: hidden;
+    border: 1px solid white;
+    box-shadow: 0px 0px 3px 0px white;
+}
+
+#warningBanner {
+    background-color: #d9534f;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 400;
+    text-shadow: 0.5px 0.5px 1px #000000;
+    overflow: hidden;
+    border: 1px solid white;
+    box-shadow: 0px 0px 3px 0px white;
+}
+
+#FilterButton {
+    margin-left: 185px;
+    width: 500px;
+}

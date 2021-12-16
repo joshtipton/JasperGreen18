@@ -1,0 +1,71 @@
+﻿@model EmployeeViewModel
+@{ string title = Model.Action + " Employee";
+    ViewBag.Title = title; }
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<h1 id="contactHeader">@ViewBag.Title</h1>
+<form asp-action="Save" method="post" class="container">
+    <div class="row form-group">
+        <label asp-for="CurrentEmployee.EmployeeFirstName">First Name</label>
+        <div>
+            <input asp-for="CurrentEmployee.EmployeeFirstName" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentEmployee.EmployeeFirstName" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentEmployee.EmployeeLastName">Last Name</label>
+        <div>
+            <input asp-for="CurrentEmployee.EmployeeLastName" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentEmployee.EmployeeLastName" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentEmployee.JobTitle">Job Title</label>
+        <div>
+            <input asp-for="CurrentEmployee.JobTitle" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentEmployee.JobTitle" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentEmployee.HourlyRate">Hourly Rate</label>
+        <div>
+            <input asp-for="CurrentEmployee.HourlyRate" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentEmployee.HourlyRate" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentEmployee.HireDate">Hire Date</label>
+        <div>
+            <input asp-for="CurrentEmployee.HireDate" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentEmployee.HireDate" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentEmployee.SSN">Social Security #</label>
+        <div>
+            <input asp-for="CurrentEmployee.SSN" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentEmployee.SSN" id="aboutStyle"></span>
+        </div>
+    </div>
+    <input type="hidden" asp-for="CurrentEmployee.EmployeeID" />
+    <input type="hidden" asp-for="CurrentEmployee.CrewForemanID" />
+    <input type="hidden" asp-for="CurrentEmployee.CrewMember1ID" />
+    <input type="hidden" asp-for="CurrentEmployee.CrewMember2ID" />
+    <button type="submit" class="btn btn-primary" id="AEButton">Save</button>
+    <a asp-action="List" class="btn btn-danger" id="AEButton">Cancel</a>
+</form>

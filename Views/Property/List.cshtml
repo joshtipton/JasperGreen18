@@ -1,0 +1,42 @@
+﻿@model PropertyListViewModel
+@{ ViewData["Title"] = "Property Manager"; }
+
+<body id="employeeBackground">
+    <h1 id="contactHeader">Property Manager</h1>
+    <table class="customTable">
+        <thead>
+            <tr>
+                <th>Owner</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Service Fee</th>
+                <th>Modify</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Property property in Model.Properties)
+            {
+            <tr>
+                <td>@property.PropertyOwner.CustomerFullName</td>
+                <td>@property.PropertyAddress</td>
+                <td>@property.PropertyCity</td>
+                <td>@property.PropertyState</td>
+                <td>@property.ServiceFee.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@property.PropertyID"
+                       class="btn btn-info">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete"
+                       asp-route-id="@property.PropertyID"
+                       class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" class="btn btn-success" style="box-shadow: 0px 0px 3px 0px black">Add New Property</a>
+</body>

@@ -1,0 +1,81 @@
+﻿@model CustomerViewModel
+@{ string title = Model.Action + " Customer";
+    ViewBag.Title = title; }
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<h1 id="contactHeader">@ViewBag.Title</h1>
+<form asp-action="Save" method="post" class="container">
+    <div class="row form-group">
+        <label asp-for="CurrentCustomer.CustomerFirstName">First Name</label>
+        <div>
+            <input asp-for="CurrentCustomer.CustomerFirstName" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentCustomer.CustomerFirstName" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentCustomer.CustomerLastName">Last Name</label>
+        <div>
+            <input asp-for="CurrentCustomer.CustomerLastName" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentCustomer.CustomerLastName" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentCustomer.BillingAddress">Address</label>
+        <div>
+            <input asp-for="CurrentCustomer.BillingAddress" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentCustomer.BillingAddress" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentCustomer.BillingCity">City</label>
+        <div>
+            <input asp-for="CurrentCustomer.BillingCity" class="form-control">
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentCustomer.BillingCity" id="aboutStyle"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label asp-for="CurrentCustomer.BillingState">State</label>
+        <div>
+            <select id="selectList" asp-for="CurrentCustomer.BillingState"
+                    asp-items="@(new SelectList(Model.GetStates, "StateID", "Name", Model.GetStates.ToList()))"
+                    class="form-control">
+                <option value="">Select a State</option>
+            </select>
+        </div>
+        <div class="col">
+            <span asp-validation-for="CurrentCustomer.BillingState" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentCustomer.BillingZip">Postal Code</label>
+            <div>
+                <input asp-for="CurrentCustomer.BillingZip" class="form-control">
+            </div>
+            <div class="col">
+                <span asp-validation-for="CurrentCustomer.BillingZip" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentCustomer.CustomerPhone">Phone</label>
+            <div>
+                <input asp-for="CurrentCustomer.CustomerPhone" class="form-control">
+            </div>
+            <div class="col">
+                <span asp-validation-for="CurrentCustomer.CustomerPhone" id="aboutStyle"></span>
+            </div>
+        </div>
+        <input type="hidden" asp-for="CurrentCustomer.CustomerID" />
+        <button type="submit" class="btn btn-primary" id="AEButton">Save</button>
+        <a asp-action="List" class="btn btn-danger" id="AEButton">Cancel</a>
+</form>

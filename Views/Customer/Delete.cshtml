@@ -1,0 +1,14 @@
+﻿@model CustomerViewModel
+@{
+    ViewBag.Title = "Delete Customer";
+}
+
+<div id="deleteBanner">
+    <h1 id="contactHeader">Confirm Deletion</h1>
+    <p id="aboutStyle">Are you sure you want to delete the customer: "@Model.CurrentCustomer.CustomerFullName"?</p>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="CurrentCustomer.CustomerID"/>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="List" class="btn btn-warning">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,93 @@
+﻿@model CustomerListViewModel
+@{
+    ViewBag.Title = "Customer Manager";
+}
+
+@*Used for Animations*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body id="employeeBackground">
+    <h1 id="contactHeader">Customer Manager</h1>
+
+    @* If TempData contains the key for an added customer*@
+    @if (TempData.Keys.Contains("AddMessage"))
+    {
+        @* Addition Banner *@
+        <div id="fade">
+            @* Fade Animation of Header*@
+            <script>$("#fade").fadeOut(7500);</script>
+            <center>
+                <h5 id="successBanner">
+                    @TempData["AddMessage"]
+                </h5>
+            </center>
+        </div>
+    }
+    @* If TempData contains the key for an edited customer*@
+    @if (TempData.Keys.Contains("EditMessage"))
+    {
+        @* Edit Banner *@
+        <div id="fade">
+            @* Fade Animation of Header*@
+            <script>$("#fade").fadeOut(7500);</script>
+            <center>
+                <h5 id="infoBanner">
+                    @TempData["EditMessage"]
+                </h5>
+            </center>
+        </div>
+    }
+    @* If TempData contains the key for a deleted customer*@
+    @if (TempData.Keys.Contains("DeleteMessage"))
+    {
+        @* Delete Banner *@
+        <div id="fade">
+            @* Fade Animation of Header*@
+            <script>$("#fade").fadeOut(7500);</script>
+            <center>
+                <h5 id="warningBanner">
+                    @TempData["DeleteMessage"]
+                </h5>
+            </center>
+        </div>
+    }
+
+    <table class="customTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th># of Properties</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Number</th>
+                <th>Modify</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Customer customer in Model.Customers)
+            {
+                <tr>
+                    <td>@customer.CustomerFullName</td>
+                    <td>@customer.CustomerProperties.Count()</td>
+                    <td>@customer.BillingAddress</td>
+                    <td>@customer.BillingCity</td>
+                    <td>@customer.BillingState</td>
+                    <td>@customer.CustomerPhone</td>
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@customer.CustomerID"
+                           class="btn btn-info">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete"
+                           asp-route-id="@customer.CustomerID"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" class="btn btn-success" style="box-shadow: 0px 0px 3px 0px black">Add New Customer</a>
+</body>

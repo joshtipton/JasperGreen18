@@ -1,0 +1,22 @@
+﻿@model CrewViewModel
+@{
+    ViewBag.Title = "Delete Crew";
+}
+
+<div id="deleteBanner">
+    <h1 id="contactHeader">Confirm Deletion</h1>
+    <p id="aboutStyle">
+        Are you sure you want to delete the crew consisting of:
+        <br />
+        Foreman: @Model.CurrentCrew.CrewForeman.EmployeeFullName
+        <br />
+        Member 1: @Model.CurrentCrew.CrewMember1.EmployeeFullName
+        <br />
+        Member 2: @Model.CurrentCrew.CrewMember2.EmployeeFullName
+    </p>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="CurrentCrew.CrewID" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="List" class="btn btn-warning">Cancel</a>
+    </form>
+</div>

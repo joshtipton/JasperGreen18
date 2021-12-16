@@ -1,0 +1,45 @@
+﻿@model PaymentViewModel
+@{ string title = Model.Action + " Property";
+    ViewBag.Title = title; }
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<h1 id="contactHeader">@ViewBag.Title</h1>
+    <form asp-action="Save" method="post" class="container">
+        <div class="row form-group">
+            <label asp-for="CurrentPayment.CustomerID">Payed By</label>
+            <select id="selectList" asp-for="CurrentPayment.CustomerID"
+                    asp-items="@(new SelectList(Model.Customers,
+                                "CustomerID", "CustomerFullName", Model.Customers.ToList()))"
+                    class="form-control">
+                <option value="">Select a Customer</option>
+            </select>
+            <div class="col">
+                <span asp-validation-for="CurrentPayment.CustomerID" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentPayment.PaymentDate"> Payment Date </label>
+            <div>
+                <input asp-for="CurrentPayment.PaymentDate" class="form-control">
+            </div>
+            <div class="col">
+                <span asp-validation-for="CurrentPayment.PaymentDate" id="aboutStyle"></span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentPayment.PaymentAmount"> Payment Amount </label>
+            <div>
+                <input asp-for="CurrentPayment.PaymentAmount" class="form-control">
+            </div>
+            <div class="col">
+                <span asp-validation-for="CurrentPayment.PaymentAmount" id="aboutStyle"></span>
+            </div>
+        </div>
+        <input type="hidden" asp-for="CurrentPayment.PaymentID" />
+        <input type="hidden" asp-for="CurrentPayment.CustomerID" />
+        <button type="submit" class="btn btn-primary" id="AEButton">Save</button>
+        <a asp-action="List" class="btn btn-danger" id="AEButton">Cancel</a>
+    </form>

@@ -1,0 +1,50 @@
+﻿@model PaymentListViewModel
+@{ ViewData["Title"] = "Payment Manager"; }
+
+<body id="employeeBackground">
+    <h1 id="contactHeader">Payment Manager</h1>
+    <form asp-action="FilterList" class="col">
+        <div class="row form-group">
+            <label asp-for="CurrentCustomer.CustomerID">Customer Filter</label>
+            <select name="SelectedCustomer" asp-for="CurrentCustomer.CustomerID"
+                    asp-items="@(new SelectList(Model.Customers,
+                                "CustomerID", "CustomerFullName", Model.Customers.ToList()))"
+                    class="form-control">
+                <option value="">All Customers</option>
+            </select>
+        </div>
+        <button id="FilterButton" type="submit" asp-action="FilterList" asp-for="" class="btn btn-info" style="box-shadow: 0px 0px 3px 0px black">Apply Filter</button>
+    </form>
+    <table class="customTable">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Modify</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Payment payment in Model.Payments)
+            {
+                <tr>
+                    <td>@payment.CurrentCustomer.CustomerFullName</td>
+                    <td>@payment.PaymentDate.ToShortDateString()</td>
+                    <td>@payment.PaymentAmount.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@payment.PaymentID"
+                           class="btn btn-info">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete"
+                           asp-route-id="@payment.PaymentID"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" class="btn btn-success" style="box-shadow: 0px 0px 3px 0px black">Add New Payment</a>
+</body>

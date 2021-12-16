@@ -1,0 +1,72 @@
+﻿@model ServiceListViewModel
+@{ ViewData["Title"] = "Service Manager";}
+
+<body id="employeeBackground">
+    <h1 id="contactHeader">Service Manager</h1>
+    <form asp-action="FilterList" class="col">
+        <div class="row form-group">
+            <label asp-for="CurrentCustomer.CustomerID">Customer Filter</label>
+            <select name="SelectedCustomer" asp-for="CurrentCustomer.CustomerID"
+                    asp-items="@(new SelectList(Model.Customers,
+                                "CustomerID", "CustomerFullName", Model.Customers.ToList()))"
+                    class="form-control">
+                <option value="">All Customers</option>
+            </select>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentProperty.PropertyID"> Property Filter</label>
+            <select name="SelectedProperty" asp-for="CurrentProperty.PropertyID"
+                    asp-items="@(new SelectList(Model.Properties,
+                                "PropertyID", "PropertyAddress", Model.Properties.ToList()))"
+                    class="form-control">
+                <option value="">All Properties</option>
+            </select>
+        </div>
+        <div class="row form-group">
+            <label asp-for="CurrentCrew.CrewID">Crew Filter</label>
+            <select name="SelectedCrew" asp-for="CurrentCrew.CrewID"
+                    asp-items="@(new SelectList(Model.Crews,
+                                "CrewID", "CrewID", Model.Crews.ToList()))"
+                    class="form-control">
+                <option value="">All Crews</option>
+            </select>
+        </div>
+        <button id="FilterButton" type="submit" asp-action="FilterList" asp-for=""class="btn btn-info" style="box-shadow: 0px 0px 3px 0px black">Apply Filter</button>
+    </form>
+    <table class="customTable">
+        <thead>
+            <tr>
+                <th>Crew</th>
+                <th>Customer</th>
+                <th>Property Address</th>
+                <th>Service Date</th>
+                <th>Service Fee</th>
+                <th>Modify</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ProvideService service in Model.Services)
+            {
+                <tr>
+                    <td>@service.CrewID</td>
+                    <td>@service.CurrentCustomer.CustomerFullName</td>
+                    <td>@service.CurrentProperty.PropertyAddress.</td>
+                    <td>@service.ServiceDate.ToShortDateString()</td>
+                    <td>@service.ServiceFee.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@service.ServiceID"
+                           class="btn btn-info">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete"
+                           asp-route-id="@service.ServiceID"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" class="btn btn-success" style="box-shadow: 0px 0px 3px 0px black">Add New Service</a>
+</body>
